@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Log in
+{% endblock %}
+
+{% block main %}
+  <!-- Main div -->
+  <div class="mainDiv">
+    <!-- Heading -->
+    <p class="h1" style="padding-top:20px; padding-bottom:5px;">Login</p>
+
+    <!-- Link to register page -->
+    <div style="padding-top:5px; padding-bottom:20px;">
+      <p class="h5">
+        <a href="/register">New? Register an account!</a>
+      </p>
+    </div>
+
+    <!-- Form for user login details -->
+    <form action="/login" method="POST">
+      <div class="form-group">
+        <input class="form-control input-lg" id="username" type="text" placeholder="username" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <input class="form-control input-lg" id="password" type="password" placeholder="password" autocomplete="off">
+      </div>
+      <div class=form-group">
+        <input class="btn btn-primary" id="submit" type="submit">
+      </div>
+    </form>
+  </div>
+{% endblock %}
