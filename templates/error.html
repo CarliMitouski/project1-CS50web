@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  ERROR: {{ code }}
+{% endblock %}
+
+{% block main %}
+<p>ERROR</p>
+<p>{{ code }}</p>
+<p style="color:blue;"><b>{{ msg }}</b></p>
+  {% if session.user_id %}
+    <a href="/">Go back to Homepage</a>    
+  {% else %}
+    <a href="/login">Go back to login page</a>
+  {% endif %}
+{% endblock %}

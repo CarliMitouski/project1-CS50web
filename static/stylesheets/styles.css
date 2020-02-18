@@ -20,3 +20,7 @@ p {
 a {
   font-size: 20px;
 }
+
+input[type=number] {
+   width: 70px;
+}

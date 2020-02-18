@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Homepage
+{% endblock %}
+
+{% block main %}
+
+  <!-- search bar -->
+  <form action="/" method="POST">
+    <div class="form-group">
+      <label for="search">Search books by:   </label>
+      <input class="form-control input-lg" id="search" name="search" type="text"
+      placeholder="isbn, title, author or year" autocomplete="off"></input>
+      <input class="btn btn-primary" type="submit"></input>
+    </div>
+  </form>
+
+  <!-- Table of information -->
+  <div class="mainDiv">
+    <!-- if no results -->
+    {% if books == [["NA"]] %}
+      <p><b>No results</b></p>
+    {% else %}
+    <!-- else if there is results -->
+      {% if books %}
+        <p style="font-size:40px;"><b>Results (click on books to see info about it): </b></p>
+      {% endif %}
+      {% for book in books %}
+        <!-- add a link to each books that leads to another page with info on that book -->
+        <a href="/{{book[2]}}">
+          <p>{{ book[0] }} <b>by</b> {{ book[1] }}</p>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+{% endblock %}

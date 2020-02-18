@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Book info
+{% endblock %}
+
+{% block main %}
+  <!-- book info -->
+  <p> {{ data[0] }} <b>by</b> {{ data[1] }} </p>
+  {% for info in bookinfo %}
+    <p style="font-size:20px;">{{ info }}</p>
+  {% endfor %}
+
+  <!-- if other people have made reviews -->
+  {% if bookreviews %}
+    <p>Ratings and reviews of others</p>
+    {% for review in bookreviews %}
+      <p style="font-size:20px;"><b>{{ review[1] }}</b> rates book <b>{{ review[0][-1] }} / 5</b> and comments <b>"{{ review[0][-2] }}"</b></p>
+    {% endfor %}
+  {% endif %}
+
+  <!-- input form for user rating and review -->
+  <p style="margin-top:80px;">Rate and review book from you</p>
+  <form action="/{{ bookinfo[0] }}" method="POST">
+    <div class="form-group">
+      <label for="rating">Rating (out of 5): </label>
+      <input class="form-control input-lg" id="rating" name="rating" type="number" min="0" max="5" size="20">
+    </div>
+    <div class="form-group">
+      <label for="review">Review: </label>
+      <input class="form-control input-lg" id="review" name="review" type="textarea" placeholder="write a review for book" size="80" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <input class="btn btn-primary" id="submit" type="submit">
+    </div>
+  </form>
+{% endblock %}
